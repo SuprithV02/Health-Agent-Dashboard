@@ -1,10 +1,16 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
 import SectionCard from "../common/SectionCard";
 import { pipeline } from "../../data/dashboardData";
 
-const agentColors = ["#2563EB", "#4F46E5", "#0D9488", "#D97706", "#059669"];
-
 export default function PipelineSection() {
+  const theme = useTheme();
+
+  const primaryShades = [
+    theme.palette.primary.light,
+    theme.palette.primary.main,
+    theme.palette.primary.dark,
+  ];
+
   return (
     <SectionCard title="Leads Pipeline">
       <Box
@@ -19,12 +25,12 @@ export default function PipelineSection() {
             key={i}
             elevation={0}
             sx={{
-              flex: 1, // ← evenly distribute
+              flex: 1,
               p: 2.5,
               borderRadius: 3,
               textAlign: "center",
-              bgcolor: agentColors[i % agentColors.length],
-              color: "#fff",
+              bgcolor: primaryShades[i % primaryShades.length],
+              color: theme.palette.primary.contrastText,
               transition: "all 0.2s ease",
               "&:hover": {
                 transform: "translateY(-3px)",

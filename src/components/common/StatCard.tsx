@@ -40,23 +40,8 @@ export default function StatCard({ title, value, change, positive }: KPI) {
         },
       }}
     >
-      <Typography
-        variant="body2"
-        sx={{
-          color: theme.palette.text.secondary,
-          fontWeight: 500,
-          letterSpacing: 0.4,
-        }}
-      >
-        {title}
-      </Typography>
-
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        mt={2}
-      >
+      {/* Top: Value + Percentage */}
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography
           variant="h5"
           sx={{
@@ -69,20 +54,36 @@ export default function StatCard({ title, value, change, positive }: KPI) {
 
         <Chip
           size="small"
-          icon={
-            positive === null ? undefined : positive ? (
-              <TrendingUp fontSize="small" />
-            ) : (
-              <TrendingDown fontSize="small" />
-            )
+          label={
+            <Stack direction="row" alignItems="center" spacing={0.5}>
+              {positive !== null &&
+                (positive ? (
+                  <TrendingUp fontSize="small" />
+                ) : (
+                  <TrendingDown fontSize="small" />
+                ))}
+              <span>{change}</span>
+            </Stack>
           }
-          label={change}
           sx={{
             fontWeight: 600,
             ...getChipStyles(),
           }}
         />
       </Stack>
+
+      {/* Bottom: Title */}
+      <Typography
+        variant="body2"
+        sx={{
+          mt: 2,
+          color: theme.palette.text.secondary,
+          fontWeight: 500,
+          letterSpacing: 0.4,
+        }}
+      >
+        {title}
+      </Typography>
     </Paper>
   );
 }

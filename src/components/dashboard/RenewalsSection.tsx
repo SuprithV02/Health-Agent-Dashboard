@@ -7,6 +7,7 @@ import {
   Chip,
   Typography,
 } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import SectionCard from "../common/SectionCard";
 import { renewals } from "../../data/dashboardData";
 
@@ -17,46 +18,31 @@ export default function RenewalsSection() {
         <TableHead>
           <TableRow
             sx={{
-              backgroundColor: "#F5F7FA", // light professional grey
+              backgroundColor: "#F5F7FA",
             }}
           >
             <TableCell
-              sx={{
-                fontWeight: 700,
-                borderBottom: "2px solid #E2E8F0",
-              }}
+              sx={{ fontWeight: 700, borderBottom: "2px solid #E2E8F0" }}
             >
               Customer
             </TableCell>
             <TableCell
-              sx={{
-                fontWeight: 700,
-                borderBottom: "2px solid #E2E8F0",
-              }}
+              sx={{ fontWeight: 700, borderBottom: "2px solid #E2E8F0" }}
             >
               Policy Type
             </TableCell>
             <TableCell
-              sx={{
-                fontWeight: 700,
-                borderBottom: "2px solid #E2E8F0",
-              }}
+              sx={{ fontWeight: 700, borderBottom: "2px solid #E2E8F0" }}
             >
               Premium
             </TableCell>
             <TableCell
-              sx={{
-                fontWeight: 700,
-                borderBottom: "2px solid #E2E8F0",
-              }}
+              sx={{ fontWeight: 700, borderBottom: "2px solid #E2E8F0" }}
             >
               Due Date
             </TableCell>
             <TableCell
-              sx={{
-                fontWeight: 700,
-                borderBottom: "2px solid #E2E8F0",
-              }}
+              sx={{ fontWeight: 700, borderBottom: "2px solid #E2E8F0" }}
             >
               Status
             </TableCell>
@@ -85,7 +71,18 @@ export default function RenewalsSection() {
               <TableCell>{row.due}</TableCell>
 
               <TableCell>
-                <Chip size="small" color={row.color} label={row.status} />
+                <Chip
+                  size="small"
+                  label={row.status}
+                  sx={(theme) => ({
+                    fontWeight: 600,
+                    height: 22,
+                    borderRadius: 1.5,
+                    fontSize: "0.75rem",
+                    bgcolor: alpha(theme.palette.primary.main, 0.12),
+                    color: theme.palette.success.main, // ✅ green text
+                  })}
+                />
               </TableCell>
             </TableRow>
           ))}
