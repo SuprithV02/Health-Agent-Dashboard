@@ -7,9 +7,25 @@ import {
   Chip,
   Typography,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
 import SectionCard from "../common/SectionCard";
 import { renewals } from "../../data/dashboardData";
+
+import { alpha } from "@mui/material/styles";
+
+const policyStatusStyles: Record<string, { bg: string; color: string }> = {
+  Pending: {
+    bg: alpha("#D97706", 0.12), // amber
+    color: "#D97706",
+  },
+  "Grace Period": {
+    bg: alpha("#B45309", 0.12), // darker amber tone
+    color: "#B45309",
+  },
+  Renewed: {
+    bg: alpha("#059669", 0.12), // green
+    color: "#059669",
+  },
+};
 
 export default function RenewalsSection() {
   return (
@@ -74,14 +90,14 @@ export default function RenewalsSection() {
                 <Chip
                   size="small"
                   label={row.status}
-                  sx={(theme) => ({
+                  sx={{
                     fontWeight: 600,
                     height: 22,
                     borderRadius: 1.5,
                     fontSize: "0.75rem",
-                    bgcolor: alpha(theme.palette.primary.main, 0.12),
-                    color: theme.palette.success.main, // ✅ green text
-                  })}
+                    backgroundColor: policyStatusStyles[row.status]?.bg,
+                    color: policyStatusStyles[row.status]?.color,
+                  }}
                 />
               </TableCell>
             </TableRow>
