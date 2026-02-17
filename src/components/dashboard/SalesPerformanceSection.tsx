@@ -36,7 +36,7 @@ export default function SalesPerformanceSection() {
             size={150}
             thickness={4}
             sx={{
-              color: "#2563EB", // Professional corporate blue
+              color: "primary.light", // Professional corporate blue
               "& .MuiCircularProgress-circle": {
                 strokeLinecap: "round",
               },
@@ -102,7 +102,7 @@ export default function SalesPerformanceSection() {
                 variant="body2"
                 sx={{
                   fontWeight: 600,
-                  color: "#2563EB",
+                  color: "black",
                 }}
               >
                 ${plan.revenue / 1000}k

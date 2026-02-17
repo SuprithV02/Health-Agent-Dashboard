@@ -1,64 +1,55 @@
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
 import SectionCard from "../common/SectionCard";
 import { pipeline } from "../../data/dashboardData";
 
 export default function PipelineSection() {
   const theme = useTheme();
 
-  const primaryShades = [
-    theme.palette.primary.light,
-    theme.palette.primary.main,
-    theme.palette.primary.dark,
-  ];
-
   return (
-    <SectionCard title="Leads Pipeline">
+    <SectionCard title="Sales Performance Funnel">
       <Box
         sx={{
           display: "flex",
-          gap: 2,
-          width: "100%",
+          alignItems: "center",
+          justifyContent: "space-between",
+          backgroundColor: theme.palette.grey[100], // light grey background
+          borderRadius: 3, // curved edges
+          px: 3,
+          py: 2.5,
         }}
       >
-        {pipeline.map((step, i) => (
-          <Paper
-            key={i}
-            elevation={0}
+        {pipeline.map((step, index) => (
+          <Box
+            key={index}
             sx={{
               flex: 1,
-              p: 2.5,
-              borderRadius: 3,
               textAlign: "center",
-              bgcolor: primaryShades[i % primaryShades.length],
-              color: theme.palette.primary.contrastText,
-              transition: "all 0.2s ease",
-              "&:hover": {
-                transform: "translateY(-3px)",
-                boxShadow: 2,
-              },
             }}
           >
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.85,
-                letterSpacing: 1,
-                fontWeight: 500,
-              }}
-            >
-              {step.label.toUpperCase()}
-            </Typography>
-
+            {/* Number */}
             <Typography
               variant="h6"
               sx={{
-                mt: 1,
                 fontWeight: 700,
+                color: "#000",
               }}
             >
               {step.value}
             </Typography>
-          </Paper>
+
+            {/* Label */}
+            <Typography
+              variant="caption"
+              sx={{
+                color: theme.palette.primary.light,
+                fontWeight: 600,
+                letterSpacing: 0.5,
+              }}
+            >
+              {step.label}
+            </Typography>
+          </Box>
         ))}
       </Box>
     </SectionCard>

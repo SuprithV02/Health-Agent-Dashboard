@@ -26,7 +26,7 @@ export default function Header() {
         >
           <Box>
             <Typography variant="h5" fontWeight={600}>
-              Morning, Suprith
+              Welcome, Suprith
             </Typography>
             <Typography color="text.secondary">
               Here's what's happening with your portfolio today.
